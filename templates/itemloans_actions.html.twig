@@ -1,0 +1,19 @@
+<div class="container px-4">
+   <div class="row g-3 justify-content-evenly">
+         <div class="col-12 col-xxl-5">
+            <div class="card">
+               <div class="card-header">
+                  <h3>{{ __('Loan Actions', 'itemloans') }}</h3>
+               </div>
+               <div class="list-group list-group-flush">
+                    {% for action in loan_actions %}
+                     <a class="list-group-item list-group-item-action" href="{{ action.link }}">
+                        <i class="{{ action.icon }} me-1"></i>
+                        <span>{{ action.name }}</span>
+                     </a>
+                    {% endfor %}
+               </div>
+            </div>
+         </div>
+   </div>
+</div>

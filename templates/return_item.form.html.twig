@@ -1,0 +1,98 @@
+{% import "components/form/fields_macros.html.twig" as fields %}
+
+<div class="container">
+    {# First Form: Search for an item #}
+    <div class="card mb-4">
+        <div class="card-header">
+            <h3>{{ __('Search for an item to return') }}</h3>
+        </div>
+        <div class="card-body">
+            <form action="return_item.form.php" method="post">
+                <input type="hidden" name="_glpi_csrf_token" value="{{ csrf_token() }}">
+
+                <div class="form-group row">
+                    <label for="item_identifier" class="col-sm-3 col-form-label">{{ __('Item Identifier') }}</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="item_identifier" name="item_identifier" placeholder="{{ __('Serial, Inventory, Immobilization, or Legacy ID') }}">
+                    </div>
+                </div>
+
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary" name="search_item" value="1">
+                        <i class="fas fa-search"></i> {{ _x('button', 'Search') }}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {# Second Form: Return cart #}
+    {% if items is not empty %}
+    <div class="card mt-4">
+        <div class="card-header">
+            <h3>{{ __('Items to be Returned') }}</h3>
+        </div>
+        <div class="card-body">
+            <form action="return_item.form.php" method="post">
+                <input type="hidden" name="_glpi_csrf_token" value="{{ csrf_token() }}">
+                {% for item in items %}
+                    <input type="hidden" name="loan_ids_to_return[]" value="{{ item.id }}">
+                {% endfor %}
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>{{ __('Item Name') }}</th>
+                            <th>{{ __('Inventory Number') }}</th>
+                            <th>{{ __('Loaned To') }}</th>
+                            <th>{{ __('Remove from Cart') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                            <tr>
+                                <td>{{ item.item_name }}</td>
+                                <td>{{ item.item_inventory_number }}</td>
+                                <td>{{ item.loan_user_name }}</td>
+                                <td>
+                                    <button type="submit" class="btn btn-danger btn-sm" name="remove_item_from_cart" value="{{ item.id }}">
+                                        <i class="fas fa-trash"></i> {{ _x('button', 'Remove') }}
+                                    </button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="mb-3">{{ __('Set Item Properties') }}</h4>
+                        <hr>
+                        {{ fields.dropdownField('Location', 'locations_id', '', __('Select Location'), {'display': true, 'is_recursive': 1, 'right': 'all', 'full_width': true}) }}
+                        {{ fields.dropdownField('State', 'states_id', '', __('Select Status'), {'display': true, 'full_width': true}) }}
+                    </div>
+                </div>
+
+                <div class="text-right mt-4">
+                    <button type="submit" class="btn btn-success" name="return_items" value="1">
+                        <i class="fas fa-level-up-alt"></i> {{ __('Return All Items') }}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('item_identifier');
+    if (searchInput) {
+        searchInput.focus();
+    }
+});
+
+function toggleItemProperties(checked) {
+    document.getElementById('item-properties-section').style.display = checked ? 'block' : 'none';
+}
+</script>

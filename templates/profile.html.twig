@@ -1,0 +1,33 @@
+{% import "components/form/fields_macros.html.twig" as fields %}
+<div class='firstbloc'>
+    <form name="form" action="{{ "Profile"|itemtype_form_path }}" method="POST">
+        <input type="hidden" name="id" value="{{ profile.fields['id'] }}">
+        <input type="hidden" name="_glpi_csrf_token" value="{{ csrf_token() }}">
+
+        <table class="tab_cadre_fixe">
+            {% for right_group in rights %}
+                <tr>
+                    <th colspan="2">{{ right_group.label }}</th>
+                </tr>
+                {% for i, right in right_group.rights %}
+                    <tr>
+                        <td>{{ right.label }}</td>
+                        <td>
+                            <input type="checkbox" name="_{{ right_group.field }}[{{ right.value }}_0]" value="1"
+                                   {% if right.checked %}checked{% endif %}>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+        </table>
+
+        {% if can_edit %}
+            <div class="center">
+                <button type="submit" class="btn btn-primary mx-1" name="update" value="1">
+                    <i class="ti ti-device-floppy"></i>
+                    <span>{{ _x('button', 'Save') }}</span>
+                </button>
+            </div>
+        {% endif %}
+    </form>
+</div>

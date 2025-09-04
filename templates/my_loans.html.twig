@@ -1,0 +1,78 @@
+<div class="container">
+    <h1>{{ __('My Loans', 'itemloans') }}</h1>
+
+    {% if unconfirmed_loans is not empty %}
+    <form action="my_loans.form.php" method="post">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h3>{{ __('Items to be Confirmed') }}</h3>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="checkall" /></th>
+                            <th>{{ __('Item Name') }}</th>
+                            <th>{{ __('Inventory Number') }}</th>
+                            <th>{{ __('Loan Date') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for loan in unconfirmed_loans %}
+                            <tr>
+                                <td><input type="checkbox" class="loan_checkbox" name="loan_ids[]" value="{{ loan.id }}"></td>
+                                <td>{{ loan.glpi_name }}</td>
+                                <td>{{ loan.glpi_otherserial }}</td>
+                                <td>{{ loan.date_loaned_created|date("Y-m-d H:i:s") }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <button type="submit" class="btn btn-primary" name="confirm_selected" value="1">
+                    {{ __('Confirm Selected') }}
+                </button>
+            </div>
+        </div>
+        <input type="hidden" name="_glpi_csrf_token" value="{{ csrf_token() }}">
+    </form>
+    {% endif %}
+
+    <div class="card">
+        <div class="card-header">
+            <h3>{{ __('Confirmed Items') }}</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>{{ __('Item Name') }}</th>
+                        <th>{{ __('Inventory Number') }}</th>
+                        <th>{{ __('Loan Date') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for loan in confirmed_loans %}
+                        <tr>
+                            <td>{{ loan.glpi_name }}</td>
+                            <td>{{ loan.glpi_otherserial }}</td>
+                            <td>{{ loan.date_loaned_created|date("Y-m-d H:i:s") }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3">{{ __('No confirmed loans.') }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('checkall').addEventListener('click', function(event) {
+    var checkboxes = document.querySelectorAll('.loan_checkbox');
+    for (var checkbox of checkboxes) {
+        checkbox.checked = event.target.checked;
+    }
+});
+</script>
