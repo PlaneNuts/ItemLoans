@@ -9,6 +9,12 @@ This plugin was created out of the need for my team to be able to quickly loan a
 * It's also possible to send optional notifications to users to ask them to confirm reception of their loans, and return reminders for loans that have a limited duration 
 * 'Computer', 'Monitor', 'Phone', 'NetworkEquipment', 'Peripheral', 'Software', 'Printer' item types can be loaned as well as items created with the Generic Objects plugin
 * Permissions can be granted to profiles allowing the user to only view, create loans, or return items
+
+## How to Install
+* Download the files as a zip
+* Extract the files to your /plugins directory
+* In GLPI go to settings --> plugins and enable the plugin
+* In your user profile set desired permissions for the plugin
   
 
 ## Contributing
