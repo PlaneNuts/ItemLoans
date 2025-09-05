@@ -1,6 +1,6 @@
 # ItemLoans GLPI plugin
 
-This plugin was created out of the need for my team to be able to quickly loan and return large numbers of devices. This is my first attempt at a plugin so there may be some bugs. This made HEAVY use of Gemeni to help me create this. A lot of witing f  code from the AI, and a lot of degugging on my part to fix mistakes. I envy the work you "real devs" are able to do, but I hope this can contribute a bit. 
+This plugin was created out of the need for my team to be able to quickly loan and return large numbers of devices. This is my first attempt at a plugin so there may be some bugs. This was made with HEAVY use of Gemeni to help me create this. A lot of witing of code from the AI, and a lot of degugging on my part to fix mistakes. I envy the work you "real devs" are able to do. 
 
 ## Features
 * A table showing a history of all loans (closed and active) with the ability to use GLPIs powerful native search to find histories of loans by user or device
