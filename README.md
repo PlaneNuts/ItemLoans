@@ -11,6 +11,12 @@ This plugin was created out of the need for my team to be able to quickly loan a
 * Permissions can be granted to profiles allowing the user to only view, create loans, or return items
 * End users with Self Service have the ability to see items currently loaned to them
 
+<img width="907" height="374" alt="image" src="https://github.com/user-attachments/assets/2c490aae-bf91-4183-b1a5-d60346e30a2c" />
+
+<img width="1451" height="742" alt="image" src="https://github.com/user-attachments/assets/56b3027a-76a8-4b22-a0d2-6554a939beca" />
+
+
+
 ## How to Install
 * Download the files as a zip
 * Extract the files to your /plugins directory
