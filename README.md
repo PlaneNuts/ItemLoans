@@ -5,6 +5,8 @@ This plugin was created out of the need for my team to be able to quickly loan a
 ## Features
 * A table showing a history of all loans (closed and active) with the ability to use GLPIs powerful native search to find histories of loans by user or device
 * Loaning and returning process allows you to quickly scan items into a temporary cart using the items Serial Number, Inventory Number, or Immobilization number
+  * Conflicts in IDs give the option to select the correct item.
+  * Loaning is limited to the current entitity or child entities
 * When loaning items you can quickly set a new location and status for all of the items being loaned (leaving them blank will make no changes to the items)
 * It's also possible to send optional notifications to users to ask them to confirm reception of their loans, and return reminders for loans that have a limited duration 
 * 'Computer', 'Monitor', 'Phone', 'NetworkEquipment', 'Peripheral', 'Software', 'Printer' item types can be loaned as well as items created with the Generic Objects plugin
