@@ -9,6 +9,7 @@ This plugin was created out of the need for my team to be able to quickly loan a
 * It's also possible to send optional notifications to users to ask them to confirm reception of their loans, and return reminders for loans that have a limited duration 
 * 'Computer', 'Monitor', 'Phone', 'NetworkEquipment', 'Peripheral', 'Software', 'Printer' item types can be loaned as well as items created with the Generic Objects plugin
 * Permissions can be granted to profiles allowing the user to only view, create loans, or return items
+* End users with Self Service have the ability to see items currently loaned to them
 
 ## How to Install
 * Download the files as a zip
