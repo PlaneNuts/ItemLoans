@@ -20,11 +20,14 @@ This plugin was created out of the need for my team to be able to quickly loan a
 
 
 ## How to Install
-* Download the files as a zip
-* Extract the files to your /plugins directory
-* In GLPI go to settings --> plugins and enable the plugin
-* In your user profile set desired permissions for the plugin
-  
+```
+cd /my/glpi/deployment/main/directory/plugins
+git clone https://github.com/PlaneNuts/itemloans.git
+```
+
+* Once installed set permissions in the desired user profiles for the plugin
+  <img width="1524" height="771" alt="image" src="https://github.com/user-attachments/assets/05d8ae37-2422-4704-aef9-d4bf6845c21e" />
+
 
 ## Contributing
 
